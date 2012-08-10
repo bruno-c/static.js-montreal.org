@@ -1,0 +1,28 @@
+!!!5
+%html
+  %head
+    %meta{ :charset => "utf-8" }
+    %meta{ :name => "description", :content => "Montreal (Canada) Javascript User Group"}
+    %meta{ :name => "keywords", :content => "montreal,javascript,js,usergroup,user group"}
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes")
+    %link(type="text/plain" rel="author" href="http://js-montreal.org/humans.txt")
+    %link{ :rel=>'stylesheet', :type=>'text/css', :href=>"#{site.base_url}/stylesheets/js-montreal.css" }
+    /[if lt IE 9]
+      %script{ :type=>'text/javascript', :src=>'//html5shim.googlecode.com/svn/trunk/html5.js' }
+    %title= site.title
+    = google_analytics
+  %body
+    %header
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            %a.brand{ :href => '/' }js-montreal.org
+            %ul.nav
+              - site.menu.each do |menu|
+                %li
+                  %a{ :href => menu.href }= menu.label
+    #content.container
+      ~ content
+    %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
+    %script{ :type=>'text/javascript', :src=>"#{site.base_url}/javascripts/bootstrap-collapse.js" }
+  = partial 'footer.html.haml'    

@@ -1,0 +1,27 @@
+---
+layout: base
+---
+
+- purpose = site.purpose
+.row
+  .span6.blurb
+    %h2 About
+    %p JS-MONTREAL is a user group run by volunteers. We meet in borrowed spaces, graciously provided by different companies and organisations. Our purpose is to provide a place where our members can have a good time talking about programming and meet other like minded folks. We talk shop, network and geek out.
+  .span6
+    %h6 Objectives
+    %ul.objectives.bigger
+      - purpose.each do |p|
+        %li #{p}
+.row
+  .span6
+    .foto
+      %img{:src=>'/img/nerd-herd.jpg'}
+      %p<
+        %em<
+          January 2010
+        &mdash; Our first meetup. Douglas Crockford in the house!
+  .span
+    .foto
+      %img{:src=>'/img/nerds.jpg'}
+        %p<
+          Douglas Crockford, Bruno Carriere, Laurent Villeneuve & Vladimir Sedach

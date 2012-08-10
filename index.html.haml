@@ -1,0 +1,46 @@
+---
+layout: base
+---
+
+- meetup = site.meetups.last
+- date   = Date.parse( meetup["on"] )
+- first  = meetup.speakers.first
+- second = meetup.speakers.last
+
+.row
+  .span8.blurb
+    .when
+      = "#{date.strftime("%B")} #{date.strftime("%Y")}"
+    %h2<
+      = meetup.title
+    - if meetup.blurb
+      %p= meetup.blurb
+  .span3.offset1
+    .register<
+      %a(href="http://twitter.com/jsmontreal" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#049CDB" data-show-count="false")Follow @jsmontreal
+      %script(src="http://platform.twitter.com/widgets.js" type="text/javascript")
+      %p.attention<
+        - if past?(meetup)
+          Our last meetup was on
+        - else
+          Next meetup is happening
+        %br<
+        %b #{Date.parse( meetup["on"] ).strftime("%A, %B %d")}
+        - if !past?(meetup)
+          %br<
+          %b @ 18:45
+        %br
+        %br
+        %a{ :class => "btn success", :href => "http://js-montreal.eventbrite.com", :target => "_new" }Register
+        %p
+          &rarr; to be notified of our events.
+.row.meetup
+  .span5
+    = partial 'speaker.html.haml', 'speaker' => first
+  .span5.offset2
+    - if booked?(meetup)
+      = partial 'speaker.html.haml', 'speaker' => second
+    - else
+      %p
+        %a.btn.info{ :href=> "mailto:contact@js-montreal.org "}
+          Looks like there's space for one more presentation!

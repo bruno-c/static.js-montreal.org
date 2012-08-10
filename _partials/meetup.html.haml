@@ -1,0 +1,20 @@
+- meetup = page.meetup
+- first  = meetup.speakers.first
+- second = meetup.speakers.last
+- date   = Date.parse( meetup["on"] )
+.row
+  .span12.blurb
+    .when
+      = "#{date.strftime("%B")} #{date.strftime("%Y")}"
+    %h2<
+      = meetup["title"]
+    - if meetup["blurb"]
+      %p= meetup["blurb"]
+.row.meetup
+  .span6
+    .speaker
+      = partial 'speaker.html.haml', 'speaker' => first
+  .span6
+    .speaker
+      - if first != second
+        = partial 'speaker.html.haml', 'speaker' => second

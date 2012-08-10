@@ -1,0 +1,24 @@
+title: 'js-montreal : JavaScript User Group in Montreal, Quebec'
+base_url: ''
+google_analytics: 'UA-2161575-2'
+
+menu:
+- label: "About"
+  href: "/about.html"
+  section: "about"
+- label: "Where is it?"
+  href: "/map.html"
+  section: "map"
+- label: "Be a presenter"
+  href: "/present.html"
+  section: "present"
+- label: "Archive"
+  href: '/archive.html'
+  section: 'archive'
+
+purpose:
+- Promote the use and development of JavaScript
+- Promote the adoption of JS outside the browser
+- Build up an inclusive network of Montreal JS developers - amateurs, journeymen, gurus - and facilitate events to encourage knowledge exchange and networking
+- Disseminate quality JS related information (tutorials, articles, papers, discussions, etc)
+- Have fun programming and talking about programming 

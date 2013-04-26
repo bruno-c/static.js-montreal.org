@@ -1,0 +1,20 @@
+---
+layout: base
+---
+
+- meetup = site.meetups.last
+- date   = Date.parse( meetup["on"] )
+- first  = meetup.speakers.first
+- second = meetup.speakers.last
+- if past?(meetup)
+  .row
+    .span12
+      .reminder
+        %p.attention<
+          Our next meetup is on
+          %span.meetup-date<
+            = next_meetup(meetup).strftime("%A, %B %d, %Y")
+          %br
+          %a{ :class => "btn btn-large btn-success", :href => "http://js-montreal.eventbrite.com", :target => "_new" }Register
+          so we can remind you and send you the details
+= partial 'meetup2.html.haml', 'meetup' => meetup

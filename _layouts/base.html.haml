@@ -13,7 +13,7 @@
     = google_analytics
   %body
     %header
-      .navbar.navbar-fixed-top
+      .navbar.navbar
         .navbar-inner
           .container
             %a.brand{ :href => '/' }js-montreal.org
@@ -21,8 +21,13 @@
               - site.menu.each do |menu|
                 %li
                   %a{ :href => menu.href }= menu.label
+            %p.navbar-text.pull-right<
+              Montreal's JavaScript User Group&nbsp;
+              %i.icon-circle-arrow-right.icon-white
+              %a(href="http://twitter.com/jsmontreal" class="twitter-follow-button" data-button="grey" data-text-color="#FFFFFF" data-link-color="#049CDB" data-show-count="false")Follow @jsmontreal
+
     #content.container
       ~ content
     %script{ :type=>'text/javascript', :src=>'//cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
     %script{ :type=>'text/javascript', :src=>"#{site.base_url}/javascripts/bootstrap-collapse.js" }
-  = partial 'footer.html.haml'    
+  = partial 'footer.html.haml'

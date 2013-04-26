@@ -1,16 +1,14 @@
 require 'pp'
 
 module JsMtl
-
   class Meetups
-
     def initialize
       @meetups = Awestruct::AStruct.new(YAML.load(File.read(File.join(config_dir, 'meetups.yml'))))
       @production = true
     end
 
     def execute(site)
-      site.meetups = @meetups.meetups      
+      site.meetups = @meetups.meetups
     end
 
     private
@@ -28,7 +26,7 @@ module JsMtl
 
     # Is this meetup happening in the past?
     def past?(meetup)
-      Date.parse(meetup["on"]) < Date.today
+      Date.parse(meetup.on) < Date.today
     end
 
     # Do we have enough speakers for the next meetup (ie, more than 1)
@@ -45,5 +43,15 @@ module JsMtl
       Date.parse(meetup.on).strftime("%A, %B %d")
     end
 
+    def next_meetup(last_meetup)
+      tuesdays = 0
+      last = Date.parse(last_meetup.on)
+      next_month = Date.new(last.next_month.year, last.next_month.month, 1)
+      while tuesdays < 2
+        tuesdays = tuesdays + 1 if next_month.wday == 2
+        next_month = next_month.next if tuesdays < 2
+      end
+      next_month
+    end
   end
 end

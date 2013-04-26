@@ -1,19 +1,14 @@
 - speaker = page.speaker
 .speaker
-  .row
-    .span5
-      %h4= speaker.title
-      %h5
-        %a{ :href => speaker.url, :target => "_new" }= speaker.name
-  .row
-    .synopsis
-      .span2
-        %a{ :href => speaker.url, :target => "_new"}
-          %img.gravatar{ :src => gravaturl(speaker.email) }
-      .span3<
-        %p<
-          = speaker.synopsis
-        %ul.speaker-links.unstyled
-          - speaker.links.each do |l|
-            %li<
-              %a{ :href => l.url, :target => "_new" }= l.title
+  .title
+    %h3= speaker.title
+    %h5
+      %a{ :href => speaker.url, :target => "_new" }= speaker.name
+  %a.pull-left{ :href => speaker.url, :target => "_new"}
+    %img.gravatar{ :src => gravaturl(speaker.email) }
+  %p.synopsis<
+    = speaker.synopsis
+    %br
+    %br
+    - speaker.links.each do |l|
+      %a{ :href => l.url, :target => "_new" }= l.title

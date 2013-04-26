@@ -1,69 +1,71 @@
 ---
-friends: 
+friends:
 - href: http://www.montrealonrails.com/
-  label: montreal.rb
-- href: http://nodemtl.com/
-  label: nodemtl
+  label: Montreal.rb
 - href: http://montrealpython.org/
-  label: mtl python
-- href: http://schemeway.dyndns.org/mslug/mslug-home/
-  label: mtl scheme &amp; lisp
+  label: Montreal Python
+- href: http://phpquebec.com/
+  label: PHP Quebec
 - href: http://www.bonjure.org/
-  label: bonjure (clojure)
+  label: Bonjure (Clojure)
 - href: http://cocoaheadsmtl.com/
-  label: cocoaheads mtl
-contact: 
+  label: Cocoaheads Montreal
+
+contact:
+- href: 'mailto:contact@js-montreal.org'
+  label: Email us
+  cls: email
 - href: https://www.facebook.com/groups/253683934748003/
-  label: facebook group
+  label: Montreal + JavaScript
   cls: facebook
-- href: http://www.linkedin.com/groups?gid=2514289
-  label: LinkedIn
-  handle: js-montreal.org
-  cls: linkedin
 - href: http://www.twitter.com/jsmontreal
   label: Twitter
   handle: "@jsmontreal"
   cls: twitter
-- href: 'mailto:contact@js-montreal.org'
-  label: Email us
-  cls: email
+- href: http://www.linkedin.com/groups?gid=2514289
+  label: js-montreal
+  cls: linkedin
 ---
 
 %footer
   .container
     .row
-      .span6
+      .span5
         %h3<
           %a(href="/")js-montreal.org
         %p<
-          Our goal is to bring the MTL JS development community together and promote the use and understanding of the language, inside and outside the browser.
+          Our goal is to bring the community together to promote the use and understanding of the JavaScript language, inside and outside the browser.
         %p<
           &copy; 2012.  Powered by
-          %a(href="http://sinatrarb.com")<
-            Sinatra
+          %a(href="http://awestruct.org/")<
+            Awestruct
           (yes, we love <a href="http://montrealonrails.com">Ruby</a> as well)
-      .span2
-        %h3 Contact
-        %ul.unstyled.contact
+      .span3.offset1
+        %ul.nav.nav-list.contact
+          %li.nav-header
+            Contact
           - page.contact.each do |l|
-            %li{ :class => l.cls }<
+            %li<
               %a{ :href => l.href }<
-                =l.handle || l.label
-      .span2
-        %h3 User Groups
-        %ul.unstyled
+                %i{ :class => "#{l.cls} icon-#{l.cls}" }
+                = " #{l.handle || l.label}"
+      .span3
+        %ul.nav.nav-list
+          %li.nav-header
+            Montreal User Groups
           - page.friends.each do |l|
             %li
               %a{ :href => l.href }<
                 =l.label
-      .span2
-        %h3 Special thanks
-        %ul.unstyled
-          %li
-            %a(href="http://cakemail.com")Cakemail
-          %li
-            %a(href="http://crim.ca")CRIM
-          %li
-            %a(href="http://bloomdigital.com")Bloom Digital
-          %li
-            for graciously offering us a space to hold our meetups.
+      /
+        .span3
+          %h6 Special thanks to
+          %ul.unstyled
+            %li
+              %a(href="http://cakemail.com")Cakemail
+            %li
+              %a(href="http://crim.ca")CRIM
+            %li
+              %a(href="http://bloomdigital.com")Bloom Digital
+            %li
+              for graciously offering us a space to hold our meetups.

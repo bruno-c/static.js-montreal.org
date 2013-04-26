@@ -1,29 +1,42 @@
-@import "bootstrap";
 
-p.hello {
-  background-color: purple;
-}
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+
+$sansFontFamily: 'Ubuntu', Tahoma, sans-serif;
+
+@import "bootstrap";
 
 html {
   background-color: #dadada;
 }
 
-body {
-  background-color: #fafafa;
-
-  /* Account for top bar */
-  padding-top: 20px;
+.navbar-inner {
+  @include box-shadow(none);
+  @include border-radius(0px);
 }
 
-h1 {
-  font-size: 58px;
+.navbar {
+  border-bottom: 1px solid $grayLighter;
+}
+
+.navbar .nav > li > a {
+  line-height: 22px;
+}
+
+body {
+  background-color: #fafafa;
+  //padding-top: 60px;  // top bar
+  word-spacing: -0.05em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 2em;
+  color: $textColor;
 }
 
 h2 {
   font-weight : normal;
-  margin : 0px 0px 0.5em 0px;
+  //margin : 0px 0px 0.5em 0px;
 }
-
 
 #content {
   background-color: #fafafa;
@@ -37,67 +50,57 @@ h2 {
   line-height: 18px;
 }
 
-header {
-
-  @include gradient-vertical(#DADADA, #FAFAFA);
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  background-color: #DADADA;
-  color : #333;
-
-  h1 {
-    color: $grayDark;
-    text-shadow : 0px 1px 0.5px $grayLighter;
-    text-transform: uppercase;
-    font-size: 24px;
-  }
-}
-
 .register {
   background-color: #eaeaea;
   border: solid 1px #fff;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
   padding: 20px;
-  margin-top: -23px;
-  position: relative;
   @include gradient-vertical(#EAEAEA, #FAFAFA);
 }
 
+.meetup-date {
+  color: #049CDB;
+}
+
 .meetup {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .speaker {
 
-  img.gravatar, canvas.gravatar {
-    // width: 100%;
-    width: 100px;
+  min-height: 300px;
+
+  .title {
+    padding-bottom: 20px;
   }
 
-  h4 {
-    font-size: 21px;
-    font-weight: normal;
+  img.gravatar {
+    width: 80px;
   }
 
-  h5, h4 {
+  h5, h4, h3 {
     text-overflow: ellipsis;
     overflow: hidden;
     line-height: 1.4;
   }
 
-  .synopsis {
-    margin-top: 1em;
-
-    p {
-      line-height: 1.6;
-    }
+  .synopsis, .speaker-links {
+    padding-left: 110px;
   }
 }
 
 p.attention {
-  line-height: 1.6;
-  margin-top: 1em;
+  font-size: 160%;
+  line-height: 1.7;
+}
+
+.reminder {
+  padding: 10px;
+  border-bottom: solid 1px #EAEAEA;
+  margin-bottom: 20px;
+  .attention {
+    text-align: center;
+  }
 }
 
 .about {
@@ -134,51 +137,47 @@ h2 {
   letter-spacing: -0.04em;
 }
 
-.blurb {
-  p {
-    font-size: 120%;
-    line-height: 160%;
-    margin-bottom: 3em;
-    border-left: 10px solid $grayLighter;
-    padding-left: 10px;
-  }
+p.blurb {
+  font-size: 120%;
+  line-height: 160%;
+  margin-top: 1em;
+  margin-bottom: 3em;
+  border-left: 10px solid $grayLighter;
+  padding-left: 10px;
 }
 
 footer {
+  margin-top: 17px;
+  padding-top: 17px;
+  border-top: 1px solid #EEE;
+
   @include gradient-vertical(#FAFAFA, #DADADA);
   h3 {
     color: lightGray;
     text-shadow : 0px 1px 0.5px white;
   }
-  ul {
-    li {
-      margin-bottom: 4px;
-    }
+}
+
+ul.contact {
+  &.email {
+    font-weight: bold;
   }
 }
 
+.icon-facebook {
+  background: url(/img/icons/facebook.png) no-repeat scroll left bottom transparent;
+}
 
-ul.contact {
-  li {
-    padding-left: 24px;
-    margin-bottom: 4px;
+.icon-linkedin {
+  background: url(/img/icons/linkedin.png) no-repeat scroll left bottom transparent;
+}
 
-    &.facebook {
-      background: url(/img/icons/facebook.png) no-repeat scroll left bottom transparent;
-    }
+.icon-twitter {
+  background: url(/img/icons/twitter-2.png) no-repeat scroll left bottom transparent;
+}
 
-    &.linkedin {
-      background: url(/img/icons/linkedin.png) no-repeat scroll left bottom transparent;
-    }
-
-    &.twitter {
-      background: url(/img/icons/twitter-2.png) no-repeat scroll left bottom transparent;
-    }
-
-    &.email {
-      background: url(/img/icons/social-email.png) no-repeat scroll left bottom transparent;
-    }
-  }
+.icon-email {
+  background: url(/img/icons/social-email.png) no-repeat scroll left bottom transparent;
 }
 
 
@@ -197,6 +196,25 @@ ul.objectives {
   li {
     color: #404040;
     margin-bottom: 5px;
+  }
+}
+
+.comma-separated {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    float: left;
+  }
+  li::before {
+    content: ", ";
+    white-space: pre;
+  }
+
+  li:first-child::before {
+    content: "";
   }
 }
 
